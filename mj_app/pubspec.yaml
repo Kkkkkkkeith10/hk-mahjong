@@ -1,0 +1,39 @@
+name: mj_app
+description: 香港十六張麻雀 — 港式台牌，茶餐廳風味。
+publish_to: "none"
+# versionName+versionCode for the Play Store; bump build number every upload.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  mj_core:
+    path: ../mj_core
+  shared_preferences: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
+
+# Generate launcher icons after `flutter pub get`:
+#   dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: assets/icon/app_icon_512.png
+  adaptive_icon_background: "#F6EDDC"
+  adaptive_icon_foreground: assets/icon/app_icon_512.png
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/fan_table.json
+    - assets/tiles/
+    - assets/avatars/
+    - assets/table/
+    - assets/home/

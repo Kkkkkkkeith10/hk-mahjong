@@ -1,0 +1,73 @@
+# Flutter/Dart build output
+**/build/
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/GeneratedPluginRegistrant.*
+**/flutter_export_environment.sh
+**/windows/flutter/ephemeral/
+**/linux/flutter/ephemeral/
+**/macos/Flutter/ephemeral/
+
+# Native/editor build artifacts
+*.pdb
+*.ilk
+*.obj
+*.o
+*.so
+*.dll
+*.exe
+*.app
+*.dSYM/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local editor/OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.~lock.*#
+
+# Local environment/secrets
+.env
+.env.*
+!.env.example
+
+# Store asset scratch (capture logs, raw shots, copied system fonts - do not commit)
+store/*.ttc
+store/raw-shot-*.png
+store/win-shot-*.png
+store/*.log
+
+# release hygiene
+node_modules/
+.env
+.env.*
+!.env.example
+.dev.vars
+!.dev.vars.example
+.wrangler/
+.vite/
+dist/
+build/
+.svelte-kit/
+dev-dist/
+*.sqlite
+*.sqlite-*
+*.db
+*.jks
+*.keystore
+key.properties
+token*.json
+.youtube*token*.json
+client_secret*.json
+__pycache__/
+*.log
+mj_app/env.json
+!mj_app/env.example.json

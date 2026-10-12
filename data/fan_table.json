@@ -1,0 +1,2425 @@
+{
+ "schema": "fan_table/v1",
+ "source": "香港台牌總會《港式十六張新章》番種簡表 (rev 2025-07-28, p.18)",
+ "transcription": {
+  "date": "2026-07-07",
+  "method": "300dpi column-by-column render",
+  "status": "DRAFT — values machine-verified against scan; relations (suppresses/requires) are engineering draft pending M2 detector work; VERIFY-n items in VERIFICATION-fan-table.md need Keith/players sign-off"
+ },
+ "settlement": {
+  "payment": "全銃制",
+  "selfDrawMultiplier": 3,
+  "cap": null,
+  "diBase": 5,
+  "dealerBonusFan": 1,
+  "laZhuangFanPerN": 2,
+  "laLedger": {
+   "compound": 1.5,
+   "roundUpOnWin": true,
+   "kickHalfRoundDown": true,
+   "matchEndPolicy": "wipe"
+  },
+  "flowerWinLa": true,
+  "_flowerWinLaNote": "總例p.9: 花糊(七搶一30/兩台花40)該得點拉落下一鋪",
+  "midwayRewards": {
+   "concealedKongDiPerPlayer": 1,
+   "sevenRobOneDi": 6,
+   "twoTaiFlowerDiPerPlayer": 8
+  }
+ },
+ "entries": [
+  {
+   "id": "ting",
+   "name": "叮",
+   "category": "action",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "ting",
+   "notes": "叮牌宣告"
+  },
+  {
+   "id": "mun_ching",
+   "name": "門清",
+   "category": "hand_state",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "mun_ching",
+   "notes": "全暗手，無上/碰/明槓"
+  },
+  {
+   "id": "self_draw",
+   "name": "自摸",
+   "category": "win_method",
+   "value": 1,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "self_draw",
+   "notes": ""
+  },
+  {
+   "id": "mun_ting",
+   "name": "門叮",
+   "category": "action",
+   "value": 15,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "ting",
+    "mun_ching"
+   ],
+   "requires": [],
+   "stacksWith": [
+    "mun_mo"
+   ],
+   "detector": "mun_ting",
+   "notes": "總例p.11: 門叮吸收叮+門清; 可複合門摸(15+5=20); 特殊形可複合門叮/門摸"
+  },
+  {
+   "id": "mun_mo",
+   "name": "門摸",
+   "category": "win_method",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "mun_ching",
+    "self_draw"
+   ],
+   "requires": [],
+   "stacksWith": [
+    "mun_ting"
+   ],
+   "detector": "mun_mo",
+   "notes": "總例p.11: 門摸吸收門清+自摸; 可複合門叮"
+  },
+  {
+   "id": "instant_eat",
+   "name": "即食",
+   "category": "action",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [
+    "ting"
+   ],
+   "stacksWith": [],
+   "detector": "instant_eat",
+   "notes": "叮出即食"
+  },
+  {
+   "id": "last_tile",
+   "name": "海底",
+   "category": "situational",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "last_tile",
+   "notes": "海底撈月"
+  },
+  {
+   "id": "rob_kong",
+   "name": "搶槓",
+   "category": "win_method",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "rob_kong",
+   "notes": "只可搶加槓"
+  },
+  {
+   "id": "flower_draw",
+   "name": "花摸",
+   "category": "situational",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "flower_draw",
+   "notes": "補花後摸牌即糊"
+  },
+  {
+   "id": "kong_draw",
+   "name": "槓摸",
+   "category": "situational",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "kong_draw",
+   "notes": "槓上開花"
+  },
+  {
+   "id": "tail_chain_draw",
+   "name": "尾牌連摸",
+   "category": "situational",
+   "value": 0,
+   "formula": {
+    "type": "geometric",
+    "base": 5,
+    "ratio": 2
+   },
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "tail_chain_draw",
+   "notes": "5×2^n，連摸次數 n"
+  },
+  {
+   "id": "double_win",
+   "name": "雙響",
+   "category": "situational",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "double_win",
+   "notes": "兩家同銃齊糊，每家各計"
+  },
+  {
+   "id": "triple_win",
+   "name": "三響",
+   "category": "situational",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "triple_win",
+   "notes": "三家齊糊"
+  },
+  {
+   "id": "no_honors",
+   "name": "無字",
+   "category": "composition",
+   "value": 1,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "no_honors",
+   "notes": ""
+  },
+  {
+   "id": "honor_tiles",
+   "name": "字牌",
+   "category": "composition",
+   "value": 1,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "honor_tiles",
+   "notes": "字牌刻/眼相關基礎分 (VERIFY-2: 計法)"
+  },
+  {
+   "id": "seat_honor",
+   "name": "正字",
+   "category": "composition",
+   "value": 1,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "seat_honor",
+   "notes": "正風/正位字"
+  },
+  {
+   "id": "no_flowers",
+   "name": "無花",
+   "category": "flower",
+   "value": 1,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "no_flowers",
+   "notes": ""
+  },
+  {
+   "id": "flower_tile",
+   "name": "花牌",
+   "category": "flower",
+   "value": 1,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "flower_tile",
+   "notes": "每隻花"
+  },
+  {
+   "id": "seat_flower",
+   "name": "正花",
+   "category": "flower",
+   "value": 1,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "seat_flower",
+   "notes": "正位花"
+  },
+  {
+   "id": "no_honor_no_flower",
+   "name": "無字花",
+   "category": "composition",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "no_honors",
+    "no_flowers"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "no_honor_no_flower",
+   "notes": "全手無字無花"
+  },
+  {
+   "id": "one_set_flowers",
+   "name": "一台花",
+   "category": "flower",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "one_set_flowers",
+   "notes": "集齊一台(四隻同組)花"
+  },
+  {
+   "id": "pair_call_win",
+   "name": "對碰",
+   "category": "wait_shape",
+   "value": 1,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "pair_call_win",
+   "notes": "對碰糊"
+  },
+  {
+   "id": "false_single",
+   "name": "假獨",
+   "category": "wait_shape",
+   "value": 1,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "false_single",
+   "notes": "假獨聽"
+  },
+  {
+   "id": "single_wait",
+   "name": "獨獨",
+   "category": "wait_shape",
+   "value": 2,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "single_wait",
+   "notes": "真獨聽"
+  },
+  {
+   "id": "pair_eye_wait",
+   "name": "將眼",
+   "category": "wait_shape",
+   "value": 2,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "pair_eye_wait",
+   "notes": "單釣將眼"
+  },
+  {
+   "id": "dealer",
+   "name": "莊家",
+   "category": "situational",
+   "value": 1,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "dealer",
+   "notes": "莊家食糊/出銃 ±"
+  },
+  {
+   "id": "dealer_repeat",
+   "name": "拉莊",
+   "category": "situational",
+   "value": 0,
+   "formula": {
+    "type": "linear",
+    "coef": 2
+   },
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "dealer_repeat",
+   "notes": "拉N莊 = 2N番"
+  },
+  {
+   "id": "common_hand",
+   "name": "平糊",
+   "category": "hand_pattern",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "common_hand",
+   "notes": "全順子"
+  },
+  {
+   "id": "big_common",
+   "name": "大平",
+   "category": "hand_pattern",
+   "value": 15,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "common_hand"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "big_common",
+   "notes": "大平糊 (VERIFY-3: 定義)"
+  },
+  {
+   "id": "terminal_seq",
+   "name": "老少順",
+   "category": "sequence",
+   "value": 3,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "terminal_seq",
+   "notes": "同色123+789"
+  },
+  {
+   "id": "double_terminal_seq",
+   "name": "雙老少順",
+   "category": "sequence",
+   "value": 25,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "terminal_seq"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "double_terminal_seq",
+   "notes": ""
+  },
+  {
+   "id": "mixed_double_seq",
+   "name": "相逢",
+   "category": "sequence",
+   "value": 3,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "mixed_double_seq",
+   "notes": "兩色同數順"
+  },
+  {
+   "id": "open_triple_meet",
+   "name": "明三相逢",
+   "category": "sequence",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "mixed_double_seq"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_triple_meet",
+   "notes": ""
+  },
+  {
+   "id": "closed_triple_meet",
+   "name": "暗三相逢",
+   "category": "sequence",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_triple_meet",
+    "mixed_double_seq"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_triple_meet",
+   "notes": ""
+  },
+  {
+   "id": "four_same_seq",
+   "name": "四同順",
+   "category": "sequence",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_triple_meet",
+    "closed_triple_meet",
+    "mixed_double_seq",
+    "identical_seq_pair",
+    "double_same_seq",
+    "double_identical_seq"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "four_same_seq",
+   "notes": ""
+  },
+  {
+   "id": "five_same_seq",
+   "name": "五同順",
+   "category": "sequence",
+   "value": 60,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "four_same_seq",
+    "open_triple_meet",
+    "closed_triple_meet",
+    "mixed_double_seq",
+    "identical_seq_pair",
+    "double_same_seq",
+    "double_identical_seq"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "five_same_seq",
+   "notes": ""
+  },
+  {
+   "id": "double_same_seq",
+   "name": "雙同順",
+   "category": "sequence",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "identical_seq_pair",
+    "mixed_double_seq"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "double_same_seq",
+   "notes": "兩組一般高"
+  },
+  {
+   "id": "open_mixed_dragon",
+   "name": "明雜龍",
+   "category": "sequence",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_mixed_dragon",
+   "notes": "三色123/456/789"
+  },
+  {
+   "id": "closed_mixed_dragon",
+   "name": "暗雜龍",
+   "category": "sequence",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_mixed_dragon"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_mixed_dragon",
+   "notes": ""
+  },
+  {
+   "id": "open_pure_dragon",
+   "name": "明清龍",
+   "category": "sequence",
+   "value": 15,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_mixed_dragon"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_pure_dragon",
+   "notes": "一色123456789"
+  },
+  {
+   "id": "closed_pure_dragon",
+   "name": "暗清龍",
+   "category": "sequence",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_pure_dragon"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_pure_dragon",
+   "notes": ""
+  },
+  {
+   "id": "open_mixed_3step",
+   "name": "明雜三步高",
+   "category": "sequence",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_mixed_3step",
+   "notes": ""
+  },
+  {
+   "id": "closed_mixed_3step",
+   "name": "暗雜三步高",
+   "category": "sequence",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_mixed_3step"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_mixed_3step",
+   "notes": ""
+  },
+  {
+   "id": "open_mixed_4step",
+   "name": "明雜四步高",
+   "category": "sequence",
+   "value": 15,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_mixed_3step"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_mixed_4step",
+   "notes": ""
+  },
+  {
+   "id": "closed_mixed_4step",
+   "name": "暗雜四步高",
+   "category": "sequence",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "closed_mixed_3step",
+    "open_mixed_4step"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_mixed_4step",
+   "notes": ""
+  },
+  {
+   "id": "open_mixed_5step",
+   "name": "明雜五步高",
+   "category": "sequence",
+   "value": 50,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_mixed_4step"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_mixed_5step",
+   "notes": ""
+  },
+  {
+   "id": "closed_mixed_5step",
+   "name": "暗雜五步高",
+   "category": "sequence",
+   "value": 100,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "closed_mixed_4step",
+    "open_mixed_5step"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_mixed_5step",
+   "notes": ""
+  },
+  {
+   "id": "open_pure_3step",
+   "name": "明清三步高",
+   "category": "sequence",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_mixed_3step"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_pure_3step",
+   "notes": ""
+  },
+  {
+   "id": "closed_pure_3step",
+   "name": "暗清三步高",
+   "category": "sequence",
+   "value": 40,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_pure_3step",
+    "closed_mixed_3step"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_pure_3step",
+   "notes": ""
+  },
+  {
+   "id": "open_pure_4step",
+   "name": "明清四步高",
+   "category": "sequence",
+   "value": 60,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_pure_3step",
+    "open_mixed_4step"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_pure_4step",
+   "notes": ""
+  },
+  {
+   "id": "closed_pure_4step",
+   "name": "暗清四步高",
+   "category": "sequence",
+   "value": 120,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "closed_pure_3step",
+    "open_pure_4step"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_pure_4step",
+   "notes": ""
+  },
+  {
+   "id": "open_pure_5step",
+   "name": "明清五步高",
+   "category": "sequence",
+   "value": 200,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_pure_4step"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_pure_5step",
+   "notes": ""
+  },
+  {
+   "id": "closed_pure_5step",
+   "name": "暗清五步高",
+   "category": "sequence",
+   "value": 400,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "closed_pure_4step",
+    "open_pure_5step"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_pure_5step",
+   "notes": ""
+  },
+  {
+   "id": "open_chain_loop",
+   "name": "明連環套",
+   "category": "sequence",
+   "value": 15,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_chain_loop",
+   "notes": ""
+  },
+  {
+   "id": "closed_chain_loop",
+   "name": "暗連環套",
+   "category": "sequence",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_chain_loop"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_chain_loop",
+   "notes": ""
+  },
+  {
+   "id": "open_golden_gate",
+   "name": "明清金門橋",
+   "category": "sequence",
+   "value": 50,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_golden_gate",
+   "notes": "一色1112345678999型橋 (VERIFY-4: 定義)"
+  },
+  {
+   "id": "closed_golden_gate",
+   "name": "暗清金門橋",
+   "category": "sequence",
+   "value": 100,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_golden_gate"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_golden_gate",
+   "notes": ""
+  },
+  {
+   "id": "identical_seq_pair",
+   "name": "一般高",
+   "category": "sequence",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "identical_seq_pair",
+   "notes": "同色同數兩順"
+  },
+  {
+   "id": "open_pure_triple_seq",
+   "name": "明一色三同順",
+   "category": "sequence",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "identical_seq_pair",
+    "mixed_double_seq"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_pure_triple_seq",
+   "notes": ""
+  },
+  {
+   "id": "closed_pure_triple_seq",
+   "name": "暗一色三同順",
+   "category": "sequence",
+   "value": 60,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_pure_triple_seq",
+    "mixed_double_seq"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_pure_triple_seq",
+   "notes": ""
+  },
+  {
+   "id": "open_pure_quad_seq",
+   "name": "明一色四同順",
+   "category": "sequence",
+   "value": 180,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_pure_triple_seq"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_pure_quad_seq",
+   "notes": ""
+  },
+  {
+   "id": "closed_pure_quad_seq",
+   "name": "暗一色四同順",
+   "category": "sequence",
+   "value": 360,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "closed_pure_triple_seq",
+    "open_pure_quad_seq"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_pure_quad_seq",
+   "notes": ""
+  },
+  {
+   "id": "double_identical_seq",
+   "name": "雙般高",
+   "category": "sequence",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "identical_seq_pair"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "double_identical_seq",
+   "notes": "兩組一般高"
+  },
+  {
+   "id": "all_triplets",
+   "name": "對對糊",
+   "category": "triplet",
+   "value": 40,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "all_triplets",
+   "notes": "五刻一眼"
+  },
+  {
+   "id": "all_concealed_triplets",
+   "name": "坎坎糊",
+   "category": "triplet",
+   "value": 240,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "all_triplets",
+    "four_concealed",
+    "mun_ching",
+    "self_draw",
+    "five_concealed",
+    "mun_mo",
+    "mun_ting"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "all_concealed_triplets",
+   "notes": "全暗刻+自摸門清 (VERIFY-5: 條件)"
+  },
+  {
+   "id": "two_concealed",
+   "name": "二暗刻",
+   "category": "triplet",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "two_concealed",
+   "notes": ""
+  },
+  {
+   "id": "three_concealed",
+   "name": "三暗刻",
+   "category": "triplet",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "two_concealed"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "three_concealed",
+   "notes": ""
+  },
+  {
+   "id": "four_concealed",
+   "name": "四暗刻",
+   "category": "triplet",
+   "value": 60,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "three_concealed"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "four_concealed",
+   "notes": ""
+  },
+  {
+   "id": "five_concealed",
+   "name": "五暗刻",
+   "category": "triplet",
+   "value": 180,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "four_concealed"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "five_concealed",
+   "notes": ""
+  },
+  {
+   "id": "two_same_triplet",
+   "name": "二同刻",
+   "category": "triplet",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "two_same_triplet",
+   "notes": "兩色同數刻"
+  },
+  {
+   "id": "small_three_same_triplet",
+   "name": "小三同刻",
+   "category": "triplet",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "two_same_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_three_same_triplet",
+   "notes": ""
+  },
+  {
+   "id": "three_same_triplet",
+   "name": "三同刻",
+   "category": "triplet",
+   "value": 40,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_three_same_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "three_same_triplet",
+   "notes": ""
+  },
+  {
+   "id": "double_same_triplet",
+   "name": "雙同刻",
+   "category": "triplet",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "two_same_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "double_same_triplet",
+   "notes": "兩組二同刻"
+  },
+  {
+   "id": "small_mixed_chain_triplet",
+   "name": "小三色連刻",
+   "category": "triplet",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_mixed_chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "mixed_chain_triplet",
+   "name": "三色連刻",
+   "category": "triplet",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_mixed_chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "mixed_chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "small_mixed_4chain_triplet",
+   "name": "小三色四連刻",
+   "category": "triplet",
+   "value": 40,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "mixed_chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_mixed_4chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "mixed_4chain_triplet",
+   "name": "三色四連刻",
+   "category": "triplet",
+   "value": 60,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_mixed_4chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "mixed_4chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "small_mixed_5chain_triplet",
+   "name": "小三色五連刻",
+   "category": "triplet",
+   "value": 90,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "mixed_4chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_mixed_5chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "mixed_5chain_triplet",
+   "name": "三色五連刻",
+   "category": "triplet",
+   "value": 180,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_mixed_5chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "mixed_5chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "small_mixed_6chain_triplet",
+   "name": "小三色六連刻",
+   "category": "triplet",
+   "value": 260,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "mixed_5chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_mixed_6chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "two_chain_triplet",
+   "name": "二連刻",
+   "category": "triplet",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "two_chain_triplet",
+   "notes": "一色兩連數刻"
+  },
+  {
+   "id": "small_three_chain_triplet",
+   "name": "小三連刻",
+   "category": "triplet",
+   "value": 15,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "two_chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_three_chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "three_chain_triplet",
+   "name": "三連刻",
+   "category": "triplet",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_three_chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "three_chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "small_four_chain_triplet",
+   "name": "小四連刻",
+   "category": "triplet",
+   "value": 60,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "three_chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_four_chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "four_chain_triplet",
+   "name": "四連刻",
+   "category": "triplet",
+   "value": 90,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_four_chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "four_chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "small_five_chain_triplet",
+   "name": "小五連刻",
+   "category": "triplet",
+   "value": 150,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "four_chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_five_chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "five_chain_triplet",
+   "name": "五連刻",
+   "category": "triplet",
+   "value": 240,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_five_chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "five_chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "small_six_chain_triplet",
+   "name": "小六連刻",
+   "category": "triplet",
+   "value": 480,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "five_chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_six_chain_triplet",
+   "notes": ""
+  },
+  {
+   "id": "double_chain_triplet",
+   "name": "雙連刻",
+   "category": "triplet",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "two_chain_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "double_chain_triplet",
+   "notes": "兩組二連刻"
+  },
+  {
+   "id": "terminal_triplet",
+   "name": "老少刻",
+   "category": "triplet",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "terminal_triplet",
+   "notes": "同色111+999"
+  },
+  {
+   "id": "double_terminal_triplet",
+   "name": "雙老少刻",
+   "category": "triplet",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "terminal_triplet"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "double_terminal_triplet",
+   "notes": ""
+  },
+  {
+   "id": "kong",
+   "name": "槓",
+   "category": "triplet",
+   "value": 2,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "kong",
+   "notes": "每槓2番 (可疊計)"
+  },
+  {
+   "id": "big_four_winds",
+   "name": "大四喜",
+   "category": "honor",
+   "value": 180,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_four_winds",
+    "big_three_winds"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "big_four_winds",
+   "notes": ""
+  },
+  {
+   "id": "small_four_winds",
+   "name": "小四喜",
+   "category": "honor",
+   "value": 120,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "big_three_winds"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_four_winds",
+   "notes": ""
+  },
+  {
+   "id": "big_three_winds",
+   "name": "大三風",
+   "category": "honor",
+   "value": 60,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_three_winds"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "big_three_winds",
+   "notes": ""
+  },
+  {
+   "id": "small_three_winds",
+   "name": "小三風",
+   "category": "honor",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_three_winds",
+   "notes": ""
+  },
+  {
+   "id": "big_three_dragons",
+   "name": "大三元",
+   "category": "honor",
+   "value": 80,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_three_dragons"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "big_three_dragons",
+   "notes": ""
+  },
+  {
+   "id": "small_three_dragons",
+   "name": "小三元",
+   "category": "honor",
+   "value": 40,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_three_dragons",
+   "notes": ""
+  },
+  {
+   "id": "all_honors",
+   "name": "字一色",
+   "category": "suit",
+   "value": 240,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "all_triplets",
+    "mixed_one_suit"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "all_honors",
+   "notes": ""
+  },
+  {
+   "id": "no_terminals",
+   "name": "斷么",
+   "category": "terminal",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "no_honors"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "no_terminals",
+   "notes": ""
+  },
+  {
+   "id": "mixed_terminal_sets",
+   "name": "混帶么",
+   "category": "terminal",
+   "value": 40,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "mixed_terminal_sets",
+   "notes": ""
+  },
+  {
+   "id": "pure_terminal_sets",
+   "name": "全帶么",
+   "category": "terminal",
+   "value": 80,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "mixed_terminal_sets"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "pure_terminal_sets",
+   "notes": ""
+  },
+  {
+   "id": "mixed_terminals",
+   "name": "混么",
+   "category": "terminal",
+   "value": 80,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "pure_terminal_sets",
+    "all_triplets"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "mixed_terminals",
+   "notes": "全手么九+字"
+  },
+  {
+   "id": "pure_terminals",
+   "name": "清么",
+   "category": "terminal",
+   "value": 420,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "mixed_terminals",
+    "no_honors"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "pure_terminals",
+   "notes": "清么九"
+  },
+  {
+   "id": "mixed_court",
+   "name": "混滿庭芳",
+   "category": "hand_pattern",
+   "value": 60,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "mixed_court",
+   "notes": "(VERIFY-6: 定義)"
+  },
+  {
+   "id": "pure_court",
+   "name": "純滿庭芳",
+   "category": "hand_pattern",
+   "value": 120,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "mixed_court"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "pure_court",
+   "notes": ""
+  },
+  {
+   "id": "missing_five",
+   "name": "缺五",
+   "category": "composition",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "missing_five",
+   "notes": ""
+  },
+  {
+   "id": "missing_one_suit",
+   "name": "缺一門",
+   "category": "composition",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "missing_one_suit",
+   "notes": ""
+  },
+  {
+   "id": "small_five_types",
+   "name": "小五門",
+   "category": "composition",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_five_types",
+   "notes": ""
+  },
+  {
+   "id": "small_seven_types",
+   "name": "小七門",
+   "category": "composition",
+   "value": 15,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_five_types"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "small_seven_types",
+   "notes": ""
+  },
+  {
+   "id": "big_five_types",
+   "name": "大五門",
+   "category": "composition",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_five_types"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "big_five_types",
+   "notes": ""
+  },
+  {
+   "id": "big_seven_types",
+   "name": "大七門",
+   "category": "composition",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_seven_types",
+    "big_five_types"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "big_seven_types",
+   "notes": ""
+  },
+  {
+   "id": "mixed_one_suit",
+   "name": "混一色",
+   "category": "suit",
+   "value": 40,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "mixed_one_suit",
+   "notes": ""
+  },
+  {
+   "id": "pure_one_suit",
+   "name": "清一色",
+   "category": "suit",
+   "value": 120,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "mixed_one_suit",
+    "no_honors"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "pure_one_suit",
+   "notes": ""
+  },
+  {
+   "id": "open_four_to_two",
+   "name": "明四歸二",
+   "category": "quad_group",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_four_to_two",
+   "notes": "四歸: 一數四張歸入手 (VERIFY-7)"
+  },
+  {
+   "id": "closed_four_to_two",
+   "name": "暗四歸二",
+   "category": "quad_group",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_four_to_two"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_four_to_two",
+   "notes": ""
+  },
+  {
+   "id": "open_four_to_three",
+   "name": "明四歸三",
+   "category": "quad_group",
+   "value": 15,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_four_to_two"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_four_to_three",
+   "notes": ""
+  },
+  {
+   "id": "closed_four_to_three",
+   "name": "暗四歸三",
+   "category": "quad_group",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "closed_four_to_two",
+    "open_four_to_three"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_four_to_three",
+   "notes": ""
+  },
+  {
+   "id": "open_four_to_four",
+   "name": "明四歸四",
+   "category": "quad_group",
+   "value": 60,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "open_four_to_three"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "open_four_to_four",
+   "notes": ""
+  },
+  {
+   "id": "closed_four_to_four",
+   "name": "暗四歸四",
+   "category": "quad_group",
+   "value": 120,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "closed_four_to_three",
+    "open_four_to_four"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "closed_four_to_four",
+   "notes": ""
+  },
+  {
+   "id": "eight_return",
+   "name": "八歸",
+   "category": "quad_group",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [
+    "open_four_to_two",
+    "closed_four_to_two",
+    "open_four_to_three",
+    "closed_four_to_three",
+    "open_four_to_four",
+    "closed_four_to_four"
+   ],
+   "detector": "eight_return",
+   "notes": "總例p.11: 八歸及十二歸另外加算四歸"
+  },
+  {
+   "id": "twelve_return",
+   "name": "十二歸",
+   "category": "quad_group",
+   "value": 80,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "eight_return"
+   ],
+   "requires": [],
+   "stacksWith": [
+    "open_four_to_two",
+    "closed_four_to_two",
+    "open_four_to_three",
+    "closed_four_to_three",
+    "open_four_to_four",
+    "closed_four_to_four"
+   ],
+   "detector": "twelve_return",
+   "notes": "總例p.11: 八歸及十二歸另外加算四歸"
+  },
+  {
+   "id": "liku_liku",
+   "name": "嚦咕嚦咕",
+   "category": "special_form",
+   "value": 40,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "mun_ching"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "liku_liku",
+   "notes": "特殊形(7對+1刻, 排列見p.9); 總例p.11: 嚦咕不另計門清"
+  },
+  {
+   "id": "eight_pairs_liku",
+   "name": "八對嚦咕",
+   "category": "special_form",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [
+    "liku_liku"
+   ],
+   "stacksWith": [],
+   "detector": "eight_pairs_liku",
+   "notes": ""
+  },
+  {
+   "id": "dragon_liku",
+   "name": "三元嚦咕",
+   "category": "special_form",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [
+    "liku_liku"
+   ],
+   "stacksWith": [],
+   "detector": "dragon_liku",
+   "notes": ""
+  },
+  {
+   "id": "winds_liku",
+   "name": "四喜嚦咕",
+   "category": "special_form",
+   "value": 40,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [
+    "liku_liku"
+   ],
+   "stacksWith": [],
+   "detector": "winds_liku",
+   "notes": ""
+  },
+  {
+   "id": "three_suit_same_pair",
+   "name": "三色同對",
+   "category": "pair_form",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "three_suit_same_pair",
+   "notes": ""
+  },
+  {
+   "id": "three_chain_pairs",
+   "name": "三連對",
+   "category": "pair_form",
+   "value": 5,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "three_chain_pairs",
+   "notes": ""
+  },
+  {
+   "id": "four_chain_pairs",
+   "name": "四連對",
+   "category": "pair_form",
+   "value": 15,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "three_chain_pairs"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "four_chain_pairs",
+   "notes": ""
+  },
+  {
+   "id": "five_chain_pairs",
+   "name": "五連對",
+   "category": "pair_form",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "four_chain_pairs"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "five_chain_pairs",
+   "notes": ""
+  },
+  {
+   "id": "six_chain_pairs",
+   "name": "六連對",
+   "category": "pair_form",
+   "value": 60,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "five_chain_pairs"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "six_chain_pairs",
+   "notes": ""
+  },
+  {
+   "id": "seven_chain_pairs",
+   "name": "七連對",
+   "category": "pair_form",
+   "value": 120,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "six_chain_pairs"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "seven_chain_pairs",
+   "notes": ""
+  },
+  {
+   "id": "eight_chain_pairs",
+   "name": "八連對",
+   "category": "pair_form",
+   "value": 420,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "seven_chain_pairs"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "eight_chain_pairs",
+   "notes": ""
+  },
+  {
+   "id": "sixteen_disjoint",
+   "name": "十六不搭",
+   "category": "special_form",
+   "value": 60,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "small_five_types",
+    "small_seven_types",
+    "big_five_types",
+    "big_seven_types"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "sixteen_disjoint",
+   "notes": "十六張互不相搭; 總例p.11: 不搭不計五門"
+  },
+  {
+   "id": "sixteen_gates_disjoint",
+   "name": "十六扇不搭",
+   "category": "special_form",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [
+    "sixteen_disjoint"
+   ],
+   "stacksWith": [],
+   "detector": "sixteen_gates_disjoint",
+   "notes": ""
+  },
+  {
+   "id": "disjoint_three_meet",
+   "name": "不搭三相",
+   "category": "special_form",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [
+    "sixteen_disjoint"
+   ],
+   "stacksWith": [],
+   "detector": "disjoint_three_meet",
+   "notes": ""
+  },
+  {
+   "id": "disjoint_mixed_dragon",
+   "name": "不搭雜龍",
+   "category": "special_form",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [
+    "sixteen_disjoint"
+   ],
+   "stacksWith": [],
+   "detector": "disjoint_mixed_dragon",
+   "notes": ""
+  },
+  {
+   "id": "thirteen_orphans",
+   "name": "十三么",
+   "category": "special_form",
+   "value": 120,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "thirteen_orphans",
+   "notes": ""
+  },
+  {
+   "id": "thirteen_gates_orphans",
+   "name": "十三扇十三么",
+   "category": "special_form",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [
+    "thirteen_orphans"
+   ],
+   "stacksWith": [],
+   "detector": "thirteen_gates_orphans",
+   "notes": "*可多於十三扇"
+  },
+  {
+   "id": "heaven_earth_win",
+   "name": "天糊/地糊",
+   "category": "situational",
+   "value": 120,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "heaven_earth_win",
+   "notes": "天糊(莊配牌即糊)/地糊 同值 (VERIFY-8: 分拆兩碼?)"
+  },
+  {
+   "id": "man_win",
+   "name": "人糊",
+   "category": "situational",
+   "value": 80,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "man_win",
+   "notes": ""
+  },
+  {
+   "id": "four_of_kind_hand",
+   "name": "四子",
+   "category": "special_form",
+   "value": 40,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "four_of_kind_hand",
+   "notes": "(VERIFY-9: 四/七/十子定義)"
+  },
+  {
+   "id": "seven_of_kind_hand",
+   "name": "七子",
+   "category": "special_form",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "seven_of_kind_hand",
+   "notes": ""
+  },
+  {
+   "id": "ten_of_kind_hand",
+   "name": "十子",
+   "category": "special_form",
+   "value": 10,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "ten_of_kind_hand",
+   "notes": ""
+  },
+  {
+   "id": "heaven_ting",
+   "name": "天叮",
+   "category": "action",
+   "value": 40,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "ting"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "heaven_ting",
+   "notes": ""
+  },
+  {
+   "id": "earth_ting",
+   "name": "地叮",
+   "category": "action",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "ting"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "earth_ting",
+   "notes": ""
+  },
+  {
+   "id": "man_ting",
+   "name": "人叮",
+   "category": "action",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "ting"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "man_ting",
+   "notes": ""
+  },
+  {
+   "id": "big_chicken",
+   "name": "大雞",
+   "category": "special_form",
+   "value": 60,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "big_chicken",
+   "notes": "總例§10: 不受高點法覆蓋"
+  },
+  {
+   "id": "big_duck",
+   "name": "大鴨",
+   "category": "special_form",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "big_duck",
+   "notes": "總例§10: 不受高點法覆蓋"
+  },
+  {
+   "id": "full_beggar",
+   "name": "全求人",
+   "category": "hand_state",
+   "value": 40,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "full_beggar",
+   "notes": "全靠他家出牌"
+  },
+  {
+   "id": "half_beggar",
+   "name": "半求人",
+   "category": "hand_state",
+   "value": 20,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "half_beggar",
+   "notes": ""
+  },
+  {
+   "id": "seven_rob_one",
+   "name": "七搶一",
+   "category": "flower",
+   "value": 30,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "seven_rob_one",
+   "notes": "花糊: 七花搶第八花 = 6底"
+  },
+  {
+   "id": "eight_immortals",
+   "name": "八仙過海",
+   "category": "flower",
+   "value": 40,
+   "formula": null,
+   "editable": true,
+   "enabled": true,
+   "suppresses": [
+    "seven_rob_one"
+   ],
+   "requires": [],
+   "stacksWith": [],
+   "detector": "eight_immortals",
+   "notes": "八花齊集 = 兩台花"
+  }
+ ]
+}

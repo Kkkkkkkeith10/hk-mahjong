@@ -1,0 +1,14 @@
+name: mj_core
+description: >-
+  Pure-Dart rules engine for 港式台牌 (HK-style 16-tile mahjong).
+  Shared by the Flutter client (offline), the Cloud Run game service (online),
+  and the AI players. No Flutter dependency — keep it that way.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dev_dependencies:
+  test: ^1.24.0
+  lints: ^3.0.0
